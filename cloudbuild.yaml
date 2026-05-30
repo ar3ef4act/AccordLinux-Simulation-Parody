@@ -1,9 +1,10 @@
 steps:
+  # Tahap 1: Build Docker Image dengan Firebase Variables
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - 'build'
       - '-t'
-      - 'gcr.io/$PROJECT_ID/accord'
+      - 'gcr.io/$PROJECT_ID/accord:$COMMIT_SHA'
       - '--build-arg'
       - 'REACT_APP_FIREBASE_API_KEY=$_REACT_APP_FIREBASE_API_KEY'
       - '--build-arg'
@@ -19,3 +20,24 @@ steps:
       - '--build-arg'
       - 'REACT_APP_FIREBASE_MEASUREMENT_ID=$_REACT_APP_FIREBASE_MEASUREMENT_ID'
       - '.'
+
+  # Tahap 2: Push Image ke Google Artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'push'
+      - 'gcr.io/$PROJECT_ID/accord:$COMMIT_SHA'
+
+  # Tahap 3: Deploy ke Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'run'
+      - 'deploy'
+      - 'accord' # Nama service Cloud Run kamu
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/accord:$COMMIT_SHA'
+      - '--region'
+      - 'asia-southeast2' # Sesuaikan dengan region project-mu
+      - '--platform'
+      - 'managed'
+      - '--allow-unauthenticated'
