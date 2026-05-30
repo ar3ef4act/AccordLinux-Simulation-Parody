@@ -50,7 +50,7 @@ Accord OS uses repository pointers instead of physical internet files.
 Example:
 
 ```bash
-curl http://repo.accord.org/bundle/speaker-dev
+curl https://repo.accord.org/bundle/monitor-dev
 ```
 
 This downloads a development bundle into the current directory.
