@@ -87,7 +87,7 @@
   background: var(--bg-1);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 36px 32px;
+  padding: 30px 28px;
   box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
@@ -680,8 +680,8 @@
 @media (max-width: 968px) {
   .auth-container .page-container {
     grid-template-columns: 1fr;
-    gap: 20px;
-    padding: 20px 16px;
+    gap: 10px;
+    padding: 10px 10px;
   }
 
   .auth-container .panel-left {
@@ -693,7 +693,7 @@
   }
 
   .auth-container .box {
-    padding: 28px 22px;
+    padding: 20px 20px;
   }
 
   .auth-container .title-large {
