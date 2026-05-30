@@ -38,7 +38,7 @@ export const useAuthStore = create((set, get) => ({
                 isAuthenticated: true,
                 isLoading: false,
                 authView: 'dashboard',
-                savedProgressionMeta: saved ? { savedAt: saved.savedAt, hardwareState: saved.hardwareState } : null,
+                savedProgressionMeta: saved ? { savedAt: saved.savedAt, hardwareState: saved.hardwareState, softwareState: saved.softwareState, systemStatus: saved.systemStatus } : null,
             });
         } catch (err) {
             set({ error: friendlyError(err.code), isLoading: false });
@@ -56,7 +56,7 @@ export const useAuthStore = create((set, get) => ({
                 isAuthenticated: true,
                 isLoading: false,
                 authView: 'dashboard',
-                savedProgressionMeta: saved ? { savedAt: saved.savedAt, hardwareState: saved.hardwareState } : null,
+                savedProgressionMeta: saved ? { savedAt: saved.savedAt, hardwareState: saved.hardwareState, softwareState: saved.softwareState, systemStatus: saved.systemStatus } : null,
             });
         } catch (err) {
             // User closed the popup before finishing, or other error
@@ -107,7 +107,7 @@ export const useAuthStore = create((set, get) => ({
                     isAuthenticated: true,
                     isLoading: false,
                     authView: 'dashboard',
-                    savedProgressionMeta: saved ? { savedAt: saved.savedAt, hardwareState: saved.hardwareState } : null,
+                    savedProgressionMeta: saved ? { savedAt: saved.savedAt, hardwareState: saved.hardwareState, softwareState: saved.softwareState, systemStatus: saved.systemStatus } : null,
                 });
             } else {
                 set({

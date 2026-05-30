@@ -13,6 +13,11 @@ const HARDWARE_LIST = [
     { key: 'router', label: 'Network / Router', icon: '🌐' },
 ];
 
+const SOFTWARE_LIST = [
+    { key: 'xland', label: 'XLand Compositor', icon: '🖼️' },
+    { key: 'desktopEnvironment', label: 'Desktop Environment', icon: '🪟' },
+];
+
 function HardwareProgressRow({ label, icon, enabled }) {
     return (
         <div className={`hw-progress-item ${enabled ? 'enabled' : 'disabled'}`}>
@@ -42,8 +47,16 @@ export default function Dashboard() {
         useSystemStore.getState().hardwareState ||
         {};
 
+    const liveSystemStatus =
+        savedProgressionMeta?.systemStatus ||
+        useSystemStore.getState().systemStatus ||
+        {};
+
     const enabledCount = HARDWARE_LIST.filter(h => liveHardware[h.key]?.enable).length;
     const totalCount = HARDWARE_LIST.length;
+
+    const softwareEnabledCount = SOFTWARE_LIST.filter(sw => liveSystemStatus[sw.key]).length;
+    const softwareTotalCount = SOFTWARE_LIST.length;
 
     const handleContinue = async () => {
         setLoading(true);
@@ -142,6 +155,23 @@ export default function Dashboard() {
                                 ))}
                             </div>
                         </div>
+
+                        {/* Software Progress */}
+                        <div className="hw-progress-section" style={{ marginTop: 24 }}>
+                            <div className="hw-progress-title">
+                                Software Status — {softwareEnabledCount}/{softwareTotalCount} drivers loaded
+                            </div>
+                            <div className="hw-progress-grid">
+                                {SOFTWARE_LIST.map(sw => (
+                                    <HardwareProgressRow
+                                        key={sw.key}
+                                        label={sw.label}
+                                        icon={sw.icon}
+                                        enabled={!!liveSystemStatus[sw.key]}
+                                    />
+                                ))}
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -158,15 +188,16 @@ export default function Dashboard() {
                                 <div className="info-title">★ Save file detected</div>
                                 <div className="info-text">
                                     Last session: {formatDate(savedProgressionMeta.savedAt)}<br />
-                                    Hardware: {enabledCount}/{totalCount} active
-                                    {enabledCount < totalCount && (
+                                    Hardware: {enabledCount}/{totalCount} active<br />
+                                    Software: {softwareEnabledCount}/{softwareTotalCount} active
+                                    {(enabledCount < totalCount || softwareEnabledCount < softwareTotalCount) && (
                                         <span style={{ color: 'var(--amber)', display: 'block', marginTop: 6 }}>
-                                            ⚠ {totalCount - enabledCount} driver(s) still broken. Good luck.
+                                            ⚠ {(totalCount - enabledCount) + (softwareTotalCount - softwareEnabledCount)} driver(s) still broken. Good luck.
                                         </span>
                                     )}
-                                    {enabledCount === totalCount && (
+                                    {enabledCount === totalCount && softwareEnabledCount === softwareTotalCount && (
                                         <span style={{ color: 'var(--green)', display: 'block', marginTop: 6 }}>
-                                            ✓ All hardware functional. Screenshot this moment.
+                                            ✓ All hardware and software functional. Screenshot this moment.
                                         </span>
                                     )}
                                 </div>
