@@ -1,0 +1,404 @@
+/* ─── Popup Backdrop ─────────────────────────────────────────────── */
+.hardware-popup-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(3px);
+    animation: hwFadeIn 0.18s ease-out;
+}
+
+@keyframes hwFadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* ─── Modal ──────────────────────────────────────────────────────── */
+.hardware-popup-modal {
+    background: #111418;
+    border: 1px solid rgba(232, 160, 32, 0.22);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 82vh;
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.6),
+        0 0 0 1px rgba(232, 160, 32, 0.06) inset;
+    display: flex;
+    flex-direction: column;
+    font-family: 'IBM Plex Mono', 'Courier New', monospace;
+    animation: hwSlideUp 0.22s ease-out;
+}
+
+@keyframes hwSlideUp {
+    from {
+        transform: translateY(12px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* ─── Header ─────────────────────────────────────────────────────── */
+.popup-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    background: #181c22;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-shrink: 0;
+}
+
+.popup-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.popup-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+}
+
+.popup-title-text h2 {
+    margin: 0;
+    color: #e8dfc8;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+}
+
+.popup-subtitle {
+    margin: 3px 0 0;
+    color: #6a5e4e;
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.popup-close-btn {
+    background: none;
+    border: none;
+    color: #6a5e4e;
+    font-size: 1rem;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: color 180ms ease, background 180ms ease;
+    line-height: 1;
+}
+
+.popup-close-btn:hover {
+    color: #e05555;
+    background: rgba(224, 85, 85, 0.08);
+}
+
+/* ─── Content ────────────────────────────────────────────────────── */
+.popup-content {
+    padding: 16px 18px;
+    flex: 1;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(232, 160, 32, 0.18) transparent;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.popup-content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.popup-content::-webkit-scrollbar-thumb {
+    background: rgba(232, 160, 32, 0.2);
+    border-radius: 4px;
+}
+
+/* ─── Sections ───────────────────────────────────────────────────── */
+.popup-section {
+    background: #181c22;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+.section-title {
+    margin: 0 0 10px;
+    color: #6a5e4e;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+}
+
+/* ─── Status Row ─────────────────────────────────────────────────── */
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.status-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-dot.functional {
+    background: #4caf70;
+    box-shadow: 0 0 6px rgba(76, 175, 112, 0.5);
+}
+
+.status-dot.non-functional {
+    background: #e05555;
+    box-shadow: 0 0 6px rgba(224, 85, 85, 0.4);
+}
+
+.status-label {
+    color: #6a5e4e;
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    display: block;
+}
+
+.status-value {
+    color: #e8dfc8;
+    font-size: 0.78rem;
+    font-weight: 600;
+    display: block;
+}
+
+.status-value.enabled {
+    color: #4caf70;
+}
+
+.status-value.disabled {
+    color: #e05555;
+}
+
+/* ─── Toggle Switch ──────────────────────────────────────────────── */
+.toggle-switch {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.toggle-switch input {
+    display: none;
+}
+
+.slider {
+    position: relative;
+    width: 38px;
+    height: 20px;
+    background: #1e242c;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: background 250ms ease, border-color 250ms ease;
+}
+
+.toggle-switch input:checked+.slider {
+    background: rgba(76, 175, 112, 0.25);
+    border-color: #4caf70;
+}
+
+.slider::before {
+    content: '';
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #6a5e4e;
+    top: 2px;
+    left: 2px;
+    transition: left 250ms ease, background 250ms ease;
+}
+
+.toggle-switch input:checked+.slider::before {
+    left: 20px;
+    background: #4caf70;
+}
+
+.toggle-label {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6a5e4e;
+    min-width: 22px;
+}
+
+/* ─── Description Section ────────────────────────────────────────── */
+.description-section {
+    border-color: rgba(232, 160, 32, 0.08);
+}
+
+.description-text {
+    margin: 0 0 8px;
+    color: #a89880;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.hints-text {
+    margin: 0;
+    color: #e8a020;
+    font-size: 0.74rem;
+    line-height: 1.5;
+    padding: 8px 10px;
+    background: rgba(232, 160, 32, 0.06);
+    border-radius: 5px;
+    border-left: 2px solid rgba(232, 160, 32, 0.4);
+}
+
+/* ─── Fields Section ─────────────────────────────────────────────── */
+.fields-section {
+    border-color: rgba(91, 155, 213, 0.1);
+}
+
+/* lshw-style: each field on its own row */
+.fields-compact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.field-compact {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 8px;
+    background: #0b0d0f;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 5px;
+    transition: border-color 180ms ease;
+}
+
+.field-compact:hover {
+    border-color: rgba(232, 160, 32, 0.15);
+}
+
+.field-name-compact {
+    color: #e8a020;
+    font-weight: 500;
+    font-size: 0.75rem;
+    font-family: 'IBM Plex Mono', monospace;
+    flex: 1;
+    word-break: break-word;
+}
+
+.field-badges-compact {
+    display: flex;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.badge-compact {
+    font-size: 0.6rem;
+    font-weight: 700;
+    padding: 2px 5px;
+    border-radius: 3px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.badge-compact.base {
+    background: rgba(91, 155, 213, 0.15);
+    color: #5b9bd5;
+}
+
+.badge-compact.attribute {
+    background: rgba(232, 160, 32, 0.12);
+    color: #e8a020;
+}
+
+.badge-compact.accord {
+    background: rgba(168, 85, 247, 0.12);
+    color: #a855f7;
+}
+
+/* ─── Footer ─────────────────────────────────────────────────────── */
+.popup-footer {
+    padding: 12px 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    background: #181c22;
+}
+
+.popup-footer-text {
+    margin: 0;
+    color: #6a5e4e;
+    font-size: 0.68rem;
+    flex: 1;
+    font-family: 'IBM Plex Mono', monospace;
+}
+
+.popup-footer-text code {
+    background: rgba(232, 160, 32, 0.1);
+    color: #e8a020;
+    padding: 1px 5px;
+    border-radius: 3px;
+}
+
+.popup-action-btn {
+    background: #1e242c;
+    border: 1px solid rgba(232, 160, 32, 0.22);
+    color: #e8a020;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.72rem;
+    font-family: 'IBM Plex Mono', monospace;
+    cursor: pointer;
+    transition: background 180ms ease, transform 180ms ease;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.popup-action-btn:hover {
+    background: rgba(232, 160, 32, 0.1);
+    transform: translateY(-1px);
+}
+
+.popup-action-btn:active {
+    transform: translateY(0);
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .hardware-popup-modal {
+        width: 95%;
+        max-height: 85vh;
+    }
+}

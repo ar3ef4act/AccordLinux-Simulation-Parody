@@ -1,0 +1,73 @@
+/* Terminal-style Snake CLI — single square board with bottom caption */
+.snake-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+    color: #dfe7ea;
+}
+
+.snake-console {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    background: transparent;
+    border-radius: 6px;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.snake-board {
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    color: #9fe49f;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.snake-board pre {
+    margin: 0;
+    white-space: pre;
+    line-height: 1;
+    font-size: calc(min(2.4vw, 20px));
+}
+
+.snake-caption {
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #9aa6b2;
+    font-size: 0.92rem;
+    margin-top: 8px;
+}
+
+.snake-caption .left,
+.snake-caption .right {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.snake-score {
+    color: #cfe9b8;
+    font-weight: 600;
+}
+
+.snake-controls {
+    color: #9aa6b2;
+}
+
+.snake-small {
+    font-size: 0.85rem;
+    color: #7f8b92;
+}
+

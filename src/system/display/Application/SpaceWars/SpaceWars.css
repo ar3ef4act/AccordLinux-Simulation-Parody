@@ -1,0 +1,34 @@
+.space-wars-wrapper {
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    font-family: 'Courier New', monospace;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.game-info-bar {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-between;
+    background: #111;
+    color: #0f0;
+    padding: 5px 10px;
+    border-bottom: 1px solid #333;
+    font-size: 14px;
+}
+
+.controls-hint {
+    color: #aaa;
+}
+
+.game-canvas {
+    display: block;
+    margin-top: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}

@@ -1,0 +1,436 @@
+.xfce-desktop {
+    width: 100%;
+    height: 100%;
+    background: #1e2529 url('https://images.unsplash.com/photo-1477346611705-65d1883cee1e?auto=format&fit=crop&q=80&w=2070') no-repeat center center;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Window Styles */
+.xfce-window {
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    background: #242b2e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 6px solid rgba(66, 153, 225, 0.9);
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    resize: both;
+    min-width: 320px;
+    min-height: 240px;
+}
+
+/* Context menu for window */
+.window-context-menu {
+    position: fixed;
+    background: #0f1720;
+    color: #e6eef6;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 6px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    z-index: 9999;
+    min-width: 140px;
+}
+.window-context-menu button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    text-align: left;
+    padding: 6px 8px;
+    cursor: pointer;
+}
+.window-context-menu button:hover { background: rgba(255,255,255,0.03); }
+
+.xfce-window.resizable {
+    resize: both;
+}
+
+.xfce-window.no-resize {
+    resize: none;
+}
+
+.xfce-window.active {
+    border-color: #3182ce;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.7);
+}
+
+.window-header {
+    height: 30px;
+    background: #1a2022;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    cursor: default;
+    user-select: none;
+}
+
+.xfce-window.active .window-header {
+    background: #2d3748;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.8rem;
+    color: #ccc;
+}
+
+.window-title {
+    font-weight: 600;
+}
+
+.header-right {
+    display: flex;
+    gap: 5px;
+}
+
+.win-btn {
+    width: 20px;
+    height: 20px;
+    border: none;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    border-radius: 3px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+}
+
+.win-btn.close:hover {
+    background: #e53e3e;
+}
+
+.window-content {
+    flex: 1;
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+}
+
+.window-fixed-shell {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+}
+
+.window-fixed-frame {
+    position: relative;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03);
+    overflow: hidden;
+}
+
+.game-window-wrapper {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.placeholder-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #2d3748;
+    padding: 20px;
+    text-align: center;
+}
+
+.big-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+}
+
+/* Panel */
+.xfce-panel {
+    height: 32px;
+    background: rgba(30, 37, 41, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px;
+    z-index: 1000;
+    color: #eee;
+    font-size: 0.85rem;
+}
+
+.panel-left, .panel-right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.menu-button {
+    background: transparent;
+    border: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 10px;
+    height: 26px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.menu-button:hover, .menu-button.active {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.panel-separator {
+    width: 1px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 6px;
+}
+
+.taskbar-items {
+    display: flex;
+    gap: 4px;
+}
+
+.taskbar-item {
+    padding: 0 12px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    font-size: 0.75rem;
+    max-width: 120px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.taskbar-item.active {
+    background: rgba(49, 130, 206, 0.3);
+    border-color: #3182ce;
+}
+
+.item-icon-small {
+    font-size: 1rem;
+}
+
+.panel-clock {
+    padding: 0 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.system-tray {
+    display: flex;
+    gap: 12px;
+    margin-right: 10px;
+    opacity: 0.8;
+}
+
+.panel-exit {
+    background: transparent;
+    border: none;
+    color: #ff5555;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0 10px;
+    cursor: pointer;
+}
+
+/* Whisker Menu */
+.whisker-menu {
+    position: absolute;
+    top: 36px;
+    left: 4px;
+    width: 420px;
+    height: 500px;
+    background: #242b2e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    display: flex;
+    flex-direction: column;
+    z-index: 2000;
+    overflow: hidden;
+}
+
+.menu-header {
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    background: #4a5568;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.username {
+    font-weight: bold;
+    color: #fff;
+}
+
+.hostname {
+    font-size: 0.75rem;
+    color: #888;
+}
+
+.menu-search {
+    padding: 10px;
+}
+
+.menu-search input {
+    width: 100%;
+    background: #1a2022;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 12px;
+    border-radius: 4px;
+    color: #fff;
+    outline: none;
+}
+
+.menu-content {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.menu-categories {
+    width: 150px;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 10px 0;
+}
+
+.category {
+    padding: 8px 15px;
+    font-size: 0.8rem;
+    color: #aaa;
+    cursor: pointer;
+}
+
+.category.active {
+    background: #3182ce;
+    color: #fff;
+}
+
+.menu-items {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.menu-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.item-icon {
+    font-size: 1.5rem;
+}
+
+.item-name {
+    font-size: 0.85rem;
+    color: #eee;
+}
+
+/* Desktop Icons */
+.desktop-content {
+    flex: 1;
+    padding: 20px;
+}
+
+.desktop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 100px);
+    grid-template-rows: repeat(auto-fill, 100px);
+    gap: 10px;
+}
+
+.desktop-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.desktop-icon:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-main {
+    font-size: 40px;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.icon-label {
+    color: #fff;
+    font-size: 0.75rem;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    max-width: 80px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

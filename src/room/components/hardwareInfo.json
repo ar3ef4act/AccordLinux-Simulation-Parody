@@ -1,0 +1,212 @@
+{
+  "hardware": {
+    "audio": {
+      "label": "Audio Speaker",
+      "description": "Audio output device for system sound",
+      "type": "Speaker",
+      "icon": "🔊",
+      "requiredFields": {
+        "base": [
+          "Speaker",
+          "HW-0xSPK1",
+          "ARM-v7",
+          "Version 2.0"
+        ],
+        "attributes": [
+          "2 Channel",
+          "Stereo Output",
+          "Sample Rate 44120",
+          "Att:pipewire",
+          "lib:pipewire"
+        ],
+        "accord_added": [
+          "RCA Inerface"
+        ]
+      },
+      "fieldDescriptions": {
+        "HARDWARE": "Hardware component name",
+        "MODEL": "Device model identifier",
+        "CHIP": "Audio chip/codec name",
+        "VERSION": "Driver version",
+        "CHANNELS": "Number of audio channels (e.g., 2 for stereo, 5.1, 7.1)",
+        "OUTPUT": "Output format (e.g., 3.5mm, HDMI, USB)",
+        "SAMPLE_RATE": "Sample rate in Hz (e.g., 44100, 48000)",
+        "PROTOCOL": "Audio protocol/standard used"
+      },
+      "hints": "Audio driver must include audio.h header and proper initialization routine"
+    },
+    "gpu": {
+      "label": "GPU / Compute Machine",
+      "description": "Graphics processing unit and main compute resources",
+      "type": "Compute_Machine",
+      "icon": "🖥️",
+      "requiredFields": {
+        "base": [
+          "Compute Machine",
+          "HW-0xGPU1",
+          "ARM-V9",
+          "Version 5.2"
+        ],
+        "attributes": [
+          "4096 Core",
+          "2 Thread",
+          "8192 VRAM/MBit",
+          "16384 MBit Main Memory",
+          "Clock Speed 2.4",
+          "Ray Tracing Enabled",
+          "Att:mesa",
+          "lib:accord_compute"
+        ],
+        "accord_added": [
+          "Vulkan Graphic",
+          "OpenGL Compute"
+        ]
+      },
+      "fieldDescriptions": {
+        "HARDWARE": "Hardware component name (Compute Machine)",
+        "MODEL": "GPU/CPU model (e.g., RTX 4090, Ryzen 9)",
+        "CHIP": "Chip architecture (e.g., NVIDIA Hopper, AMD RDNA3)",
+        "VERSION": "Driver version",
+        "CORES": "Number of GPU/CPU cores",
+        "THREADS_PER_CORE": "Thread count per core",
+        "VRAM_MBIT": "VRAM in MB",
+        "MAIN_MEMORY_MBIT": "Main RAM in MB",
+        "CLOCK_SPEED": "Clock speed in MHz",
+        "RAYTRACING_SUPPORT": "Raytracing support (yes/no)",
+        "GRAPHIC_API": "Graphics API (OpenGL, Vulkan, DirectX)",
+        "COMPUTE_API": "Compute API (CUDA, HIP, OneAPI)"
+      },
+      "hints": "Compute driver must include multithread.h and support parallel execution"
+    },
+    "externalMonitor": {
+      "label": "External Monitor",
+      "description": "Secondary display output device",
+      "type": "External_Monitor",
+      "icon": "🖱️",
+      "requiredFields": {
+        "base": [
+          "External Monitor",
+          "HW-0xMON1",
+          "ARM-v8",
+          "Version 3.1"
+        ],
+        "attributes": [
+          "1920x1080",
+          "75 Hz",
+          "RGB 24-bit Color",
+          "Att:xland",
+          "lib:accord_display"
+        ],
+        "accord_added": [
+          "HDMI"
+        ]
+      },
+      "fieldDescriptions": {
+        "HARDWARE": "Hardware component name (Monitor)",
+        "MODEL": "Monitor model",
+        "CHIP": "Display controller chip",
+        "VERSION": "Driver version",
+        "RESOLUTION": "Screen resolution (e.g., 1920x1080, 2560x1440)",
+        "REFRESH_RATE": "Refresh rate in Hz (e.g., 60, 144, 240)",
+        "COLOR_FORMAT": "Color format (RGB, YCBCR, etc.)",
+        "INTERFACE": "Connection type (HDMI, DisplayPort, DVI, USB-C)"
+      },
+      "hints": "Monitor driver must include graphic.h for proper display initialization"
+    },
+    "xland": {
+      "label": "XLAND Compositor",
+      "description": "X11/Wayland display server and compositor",
+      "type": "XLAND-Compositor",
+      "icon": "🎨",
+      "requiredFields": {
+        "base": [
+          "XLAND-Compositor",
+          "xland-driver",
+          "Version 1.4",
+          "Patch 2.1"
+        ],
+        "attributes": [
+          "Wayland Protocol",
+          "OpenGL Render",
+          "EGL Compositor",
+          "1.5 Version - API",
+          "Att:wayland",
+          "lib:accord_xland"
+        ],
+        "accord_added": [
+          "Enabled Graphic Accelerator",
+          "Mesa Backend"
+        ]
+      },
+      "fieldDescriptions": {
+        "SOFTWARE": "Software component name",
+        "DRIVER": "Compositor driver name (e.g., XLAND)",
+        "VERSION": "Major version number",
+        "PATCH": "Patch/build number",
+        "PROTOCOL": "Display protocol (X11, Wayland)",
+        "RENDERER": "Rendering backend (OpenGL, Vulkan)",
+        "COMPOSITOR_API": "Compositor API version",
+        "API_VERSION": "Protocol API version",
+        "GPU_ACCELERATOR": "GPU acceleration method",
+        "GPU_BACKEND": "GPU backend library"
+      },
+      "hints": "Compositor requires GPU driver to be functional"
+    },
+    "desktopEnvironment": {
+      "label": "Desktop Environment",
+      "description": "Window manager and desktop shell environment",
+      "type": "Desktop-Environment",
+      "icon": "🖼️",
+      "requiredFields": {
+        "base": [
+          "Desktop-Environment",
+          "driver-driver",
+          "Version 3.0",
+          "Patch 1.3"
+        ],
+        "attributes": [
+          "Wayland API",
+          "Panel Enabled : 1",
+          "Launcher Enabled : 1",
+          "File Manager : accord-fm",
+          "Att:xland",
+          "lib:accord_desktop"
+        ],
+        "accord_added": [
+          "Vulkan Graphic API"
+        ]
+      },
+      "fieldDescriptions": {
+        "SOFTWARE": "Software component name",
+        "DRIVER": "Desktop environment name (e.g., KDE, GNOME)",
+        "VERSION": "Desktop environment version",
+        "PATCH": "Patch/release number",
+        "COMPOSITOR_API": "Compositor API compatibility",
+        "PANEL_ENABLED": "Task panel enabled (true/false)",
+        "LAUNCHER_ENABLED": "Application launcher enabled (true/false)",
+        "FILE_MANAGER": "File manager name (Nautilus, Dolphin, etc.)",
+        "GAMES_LAUNCHER": "Games launcher plugin",
+        "GRAPHIC_API": "Graphics API used"
+      },
+      "hints": "Desktop Environment requires XLAND Compositor to be functional"
+    },
+    "router": {
+      "label": "Network Router",
+      "description": "Network gateway and connectivity device",
+      "type": "Network",
+      "icon": "🌐",
+      "requiredFields": {
+        "base": [
+          "Router IP : 192.168.10.1/24"
+        ],
+        "attributes": [],
+        "accord_added": []
+      },
+      "fieldDescriptions": {
+        "gateway": "Default gateway IP address",
+        "mac": "Router MAC address"
+      },
+      "hints": "Network device provides internet connectivity and DHCP services"
+    }
+  }
+}

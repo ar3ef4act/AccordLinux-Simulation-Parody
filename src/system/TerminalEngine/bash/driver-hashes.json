@@ -1,0 +1,26 @@
+{
+  "hardware": {
+    "gpu": {
+      "accord": "9ce286645167b90425fe26445d43ec74670c49c40400bb1773d27c2d087cfb14",
+      "attribute": "8a781bedff7dc06d42e84b8eb275351b2c4ec2749011bff5f9a4edf8c4762d22"
+    },
+    "audio": {
+      "accord": "036ac82c2fea93f91f82092447b9ec8b48d47f4fe35cb1e2391f7e4f0a6f943c",
+      "attribute": "5d3dab6d83012ceaa2a7dde79ad8e4c430a566d4be88939367583103bed8299e"
+    },
+    "externalMonitor": {
+      "accord": "1e27087a38e95e9f8ed9e16f3d287ea611dac92086be412dc3cb565e05d6df87",
+      "attribute": "6fd6605c92b875caf1fc48f18964e4030019a6a380c3dd37af2cc7df2f4745e9"
+    }
+  },
+  "software": {
+    "xland": {
+      "accord": "9f05bd30ff31f373be8eaca5b8c49e1aa0bc0819bfd04f3ffd4b9052142f5671",
+      "attribute": "188cf29e58bfd3d35b00fbc12ed8b9fee5fcf637d750897ffc0e8024507bb52e"
+    },
+    "desktopEnvironment": {
+      "accord": "e04c1e024be0b09e8ee94107a63c042c2ef7f3e527b2d14b7cdd916b47f65fd2",
+      "attribute": "f5b53e4950d06a61ab97ad91e154931fa85c247c37b16c327f88ca4e49e0ed02"
+    }
+  }
+}

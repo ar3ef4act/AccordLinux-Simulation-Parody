@@ -1,0 +1,123 @@
+{
+  "syntax_rules": [
+    {
+      "name": "include_driver",
+      "pattern": "#include\\s*<driver\\.h>",
+      "required": true
+    },
+    {
+      "name": "include_accord",
+      "pattern": "#include\\s*<accord\\.h>",
+      "required": true
+    },
+    {
+      "name": "struct_definition",
+      "pattern": "struct\\s+(hardware|software)\\s*\\{",
+      "required": true
+    },
+    {
+      "name": "struct_spec_init",
+      "pattern": "struct\\s+(hardware|software)\\s+spec\\s*=\\s*\\{",
+      "required": true
+    },
+    {
+      "name": "init_configuration",
+      "pattern": "void\\s+init_configuration\\s*\\(\\s*\\)",
+      "required": true
+    },
+    {
+      "name": "main_function",
+      "pattern": "int\\s+main\\s*\\(\\s*\\)",
+      "required": true
+    }
+  ],
+  "required_includes": {
+    "Speaker": "audio.h",
+    "Monitor": "graphic.h",
+    "Desktop Environment": "graphic.h",
+    "XLAND-Compositor" : "graphic.h",
+    "Compute Machine": "multithread.h"
+  },
+  "metadata": {
+    "HARDWARE": [
+      "HARDWARE",
+      "MODEL",
+      "CHIP",
+      "VERSION",
+      {
+        "_COMMENT": "For Speaker, External Monitor, Compute Machine"
+      }
+    ],
+    "SOFTWARE": [
+      "SOFTWARE",
+      "DRIVER",
+      "VERSION",
+      "PATCH",
+      {
+        "_COMMENT": "For Desktop-Environment and XLAND-Compositor"
+      }
+    ],
+    "Speaker": {
+      "attribute": [
+        "CHANNELS",
+        "OUTPUT",
+        "SAMPLE_RATE"
+      ],
+      "accord_added": [
+        "PROTOCOL"
+      ],
+      "_COMMENT": "For Speaker"
+    },
+    "External_Monitor": {
+      "attribute": [
+        "RESOLUTION",
+        "REFRESH_RATE",
+        "COLOR_FORMAT"
+      ],
+      "accord_added": [
+        "INTERFACE"
+      ],
+      "_COMMENT": "For External_Monitor"
+    },
+    "Compute_Machine": {
+      "attribute": [
+        "CORES",
+        "THREADS_PER_CORE",
+        "VRAM_MBIT",
+        "MAIN_MEMORY_MBIT",
+        "CLOCK_SPEED",
+        "RAYTRACING_SUPPORT"
+      ],
+      "accord_added": [
+        "GRAPHIC_API",
+        "COMPUTE_API"
+      ],
+      "_COMMENT": "For Compute_Machine"
+    },
+    "XLAND-Compositor": {
+      "attribute": [
+        "PROTOCOL",
+        "RENDERER",
+        "COMPOSITOR_API",
+        "API_VERSION"
+      ],
+      "accord_added": [
+        "GPU_ACCELERATOR",
+        "GPU_BACKEND"
+      ],
+      "_COMMENT": "For XLAND-Compositor"
+    },
+    "Desktop-Environment": {
+      "attribute": [
+        "COMPOSITOR_API",
+        "PANEL_ENABLED",
+        "LAUNCHER_ENABLED",
+        "FILE_MANAGER"
+      ],
+      "accord_added": [
+        "GRAPHIC_API"
+      ],
+      "_COMMENT": "For Desktop-Environment"
+    }
+  }
+}
