@@ -86,7 +86,6 @@ export default function Room() {
                                 x="783" y="117" width="100" height="100"
                                 onClick={() => { setDisplaySource('laptop'); setView('display'); }}
                                 onInfo={(e) => openHardwareInfo('laptop', e)}
-                                onClick={() => handleHardwareClick('laptop')}
                                 src={laptop} alt="Laptop"
                             />
 
