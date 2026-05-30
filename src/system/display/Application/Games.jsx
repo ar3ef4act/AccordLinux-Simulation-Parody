@@ -73,7 +73,7 @@ export default function Games({ inWindow }) {
     const [LOCStartSignal, setLOCStartSignal] = useState(0);
 
     const GAMES_PACKAGE_MARKER = '/src/ABAL/accord-games.pkg';
-    const GAMES_DOWNLOAD_HINT = 'curl http://repo.accord.org/api/accord-games -o /src/ABAL';
+    const GAMES_DOWNLOAD_HINT = 'curl https://repo.accord.org/lib/accord-games -o /src/ABAL';
     const gamesInstalled = Boolean(vfs[GAMES_PACKAGE_MARKER]);
 
     useEffect(() => {

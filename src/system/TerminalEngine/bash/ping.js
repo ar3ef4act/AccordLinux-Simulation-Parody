@@ -47,7 +47,13 @@ export function pingCommand({ system, args }) {
     } catch (e) {
         // ignore
     }
-    externalHosts.add('google.com');
+    [
+        'google.com',
+        'linux.org',
+        'common.linux.org',
+        'accord.org',
+        'repo.accord.org'
+    ].forEach(url => externalHosts.add(url));
 
     // Resolusi host
     const isLocalhost = host === 'localhost' || host === '127.0.0.1';

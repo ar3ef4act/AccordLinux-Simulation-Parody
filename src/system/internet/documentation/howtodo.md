@@ -35,9 +35,11 @@ ip a
 
 Without internet access:
 
-* `curl` will not work
+* `curl` will not work 
 * repositories cannot be accessed
 * driver bundles cannot be downloaded
+
+Try `ping` to check connection.
 
 ---
 
@@ -63,9 +65,9 @@ Some repositories contain:
 Example repositories:
 
 ```bash
-http://repo.accord.org/bundle/speaker-dev
-http://repo.accord.org/bundle/compute-dev
-http://repo.accord.org/api/full-devkit
+https://common.linux.org/x86_64/audio.h
+https://repo.accord.org/bundle/compute-dev
+https://repo.accord.org/bundle/full-devkit
 ```
 
 ---
