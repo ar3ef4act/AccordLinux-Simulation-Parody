@@ -49,10 +49,10 @@ export default function Settings() {
     } = useSystemStore();
 
     // Local state for settings not yet in store — will be persisted via setSystemSetting
-    const autoGui       = systemSettings?.autoGui       ?? false;
-    const terminalFont  = systemSettings?.terminalFont  ?? 'JetBrains Mono';
-    const terminalSize  = systemSettings?.terminalSize  ?? 13;
-    const colorScheme   = systemSettings?.colorScheme   ?? 'catppuccin';
+    const autoGui = systemSettings?.autoGui ?? false;
+    const terminalFont = systemSettings?.terminalFont ?? 'JetBrains Mono';
+    const terminalSize = systemSettings?.terminalSize ?? 13;
+    const colorScheme = systemSettings?.colorScheme ?? 'catppuccin';
 
     const [activeSection, setActiveSection] = useState('display');
 
@@ -63,11 +63,11 @@ export default function Settings() {
     };
 
     const sections = [
-        { id: 'display',   icon: '🖥️',  label: 'Display'   },
-        { id: 'session',   icon: '🔐',  label: 'Session'   },
-        { id: 'terminal',  icon: '💻',  label: 'Terminal'  },
-        { id: 'hardware',  icon: '🔧',  label: 'Hardware'  },
-        { id: 'about',     icon: 'ℹ️',  label: 'About'     },
+        { id: 'display', icon: '🖥️', label: 'Display' },
+        { id: 'session', icon: '🔐', label: 'Session' },
+        { id: 'terminal', icon: '💻', label: 'Terminal' },
+        { id: 'hardware', icon: '🔧', label: 'Hardware' },
+        { id: 'about', icon: 'ℹ️', label: 'About' },
     ];
 
     return (
@@ -110,7 +110,7 @@ export default function Settings() {
                                 className="settings-select"
                                 value={systemSettings?.displaySource ?? 'laptop'}
                                 onChange={e => set('displaySource', e.target.value)}
-                            >{systemSettings?.displaySource === 'monitor' ? 'Monitor' : 'Laptop'}</span>
+                            >{systemSettings?.displaySource === 'laptop' ? 'Laptop' : 'Monitor'}</span>
                         </SettingRow>
 
                         <div className="settings-info-box">
@@ -159,10 +159,10 @@ export default function Settings() {
                         <SectionHeader icon="🔧" title="Hardware Status" />
                         <div className="settings-hw-grid">
                             {[
-                                { key: 'gpu',                label: 'GPU / Compute',    icon: '🎮' },
-                                { key: 'audio',              label: 'Audio / Speaker',  icon: '🔊' },
-                                { key: 'externalMonitor',    label: 'External Monitor', icon: '🖥️' },
-                                { key: 'router',             label: 'Network / Router', icon: '🌐' },
+                                { key: 'gpu', label: 'GPU / Compute', icon: '🎮' },
+                                { key: 'audio', label: 'Audio / Speaker', icon: '🔊' },
+                                { key: 'externalMonitor', label: 'External Monitor', icon: '🖥️' },
+                                { key: 'router', label: 'Network / Router', icon: '🌐' },
                             ].map(({ key, label, icon }) => {
                                 const phys = hardwareState?.[key]?.enable ?? false;
                                 const soft = systemStatus?.[key] ?? false;
@@ -180,9 +180,9 @@ export default function Settings() {
                                 );
                             })}
                             {[
-                                { key: 'xland',              label: 'XLAND Compositor', icon: '🪟' },
-                                { key: 'desktopEnvironment', label: 'Desktop Env',       icon: '🖼️' },
-                                { key: 'network',            label: 'Network',           icon: '📡' },
+                                { key: 'xland', label: 'XLAND Compositor', icon: '🪟' },
+                                { key: 'desktopEnvironment', label: 'Desktop Env', icon: '🖼️' },
+                                { key: 'network', label: 'Network', icon: '📡' },
                             ].map(({ key, label, icon }) => {
                                 const soft = systemStatus?.[key] ?? false;
                                 return (
