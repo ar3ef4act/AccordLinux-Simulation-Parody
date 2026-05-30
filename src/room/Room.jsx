@@ -101,7 +101,6 @@ export default function Room() {
 
                         <HardwareItem
                             x="332" y="38" width="335" height="145"
-                            onClick={() => handleHardwareClick('monitor')}
                             onInfo={(e) => openHardwareInfo('externalMonitor', e)}
                             src={monitor} alt="Monitor"
                             className={`component-hw ${hardwareState.externalMonitor?.enable ? 'active' : ''}`}
@@ -109,14 +108,12 @@ export default function Room() {
 
                         <HardwareItem //Left
                             x="260" y="92" width="130" height="130"
-                            onClick={() => handleHardwareClick('audio')}
                             onInfo={(e) => openHardwareInfo('audio', e)}
                             src={speaker} alt="Speaker"
                             className={`component-hw ${hardwareState.audio?.enable ? 'active' : ''}`}
                         />
                         <HardwareItem //Right - Mirrored
                             x="610" y="92" width="130" height="130"
-                            onClick={() => handleHardwareClick('audio')}
                             onInfo={(e) => openHardwareInfo('audio', e)}
                             src={speaker} alt="Speaker"
                             className={`component-hw ${hardwareState.audio?.enable ? 'active' : ''}`}
@@ -125,7 +122,6 @@ export default function Room() {
 
                         <HardwareItem
                             x="852" y="325" width="130" height="130"
-                            onClick={() => handleHardwareClick('router')}
                             onInfo={(e) => openHardwareInfo('router', e)}
                             src={router} alt="router"
                             className={`component-hw ${hardwareState.router?.enable ? 'active' : ''}`}
@@ -133,7 +129,6 @@ export default function Room() {
 
                         <HardwareItem
                             x="8" y="14" width="290" height="270"
-                            onClick={() => handleHardwareClick('compute')}
                             onInfo={(e) => openHardwareInfo('gpu', e)}
                             src={compute} alt="compute"
                             className={`component-hw ${hardwareState.gpu?.enable ? 'active' : ''}`}
