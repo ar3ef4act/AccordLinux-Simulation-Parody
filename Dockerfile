@@ -37,7 +37,7 @@ FROM nginx:alpine
 COPY --from=builder /app/build /usr/share/nginx/html
 
 # Membuka port default web
-EXPOSE 80
+EXPOSE 8080
 
 # Menjalankan web server Nginx
 CMD ["nginx", "-g", "daemon off;"]
