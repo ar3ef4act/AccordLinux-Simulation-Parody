@@ -1,0 +1,414 @@
+/* ─── AppsBrowser Shell ──────────────────────────────────────── */
+.apps-browser-root {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #f0f2f5;
+    font-family: 'Inter', 'IBM Plex Sans', -apple-system, sans-serif;
+    overflow: hidden;
+}
+
+/* ─── Toolbar ────────────────────────────────────────────────── */
+.apps-browser-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    background: #e8eaed;
+    border-bottom: 1px solid #d0d3d8;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.apps-browser-toolbar .btn {
+    background: transparent;
+    border: 1px solid transparent;
+    color: #5f6368;
+    border-radius: 6px;
+    padding: 6px 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.15s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.apps-browser-toolbar .btn:hover {
+    background: #dadce0;
+    color: #202124;
+}
+
+.apps-browser-toolbar .btn:active {
+    background: #c8cacd;
+}
+
+.apps-browser-address {
+    flex: 1;
+    padding: 7px 14px;
+    background: #fff;
+    color: #202124;
+    border: 1px solid #d0d3d8;
+    border-radius: 20px;
+    font-family: 'IBM Plex Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.04);
+}
+
+.apps-browser-search-container {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    margin-left: 8px;
+}
+
+.apps-browser-search-input {
+    padding: 7px 12px;
+    border-radius: 6px;
+    border: 1px solid #d0d3d8;
+    background: #fff;
+    color: #202124;
+    font-size: 13px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: all 0.2s ease;
+    width: 130px;
+}
+
+.apps-browser-search-input:focus {
+    border-color: #c47a10;
+    box-shadow: 0 0 0 2px rgba(196, 122, 16, 0.12);
+    width: 170px;
+}
+
+.apps-browser-search-input::placeholder {
+    color: #9aa0a6;
+}
+
+.apps-browser-matches {
+    min-width: 42px;
+    text-align: center;
+    font-size: 11px;
+    color: #5f6368;
+    font-family: 'IBM Plex Mono', monospace;
+    font-variant-numeric: tabular-nums;
+}
+
+/* ─── Content Area ───────────────────────────────────────────── */
+.apps-browser-content {
+    flex: 1;
+    overflow: auto;
+    padding: 0;
+    background: #fff;
+    position: relative;
+}
+
+.apps-browser-content::-webkit-scrollbar {
+    width: 10px;
+}
+.apps-browser-content::-webkit-scrollbar-track {
+    background: transparent;
+}
+.apps-browser-content::-webkit-scrollbar-thumb {
+    background: #c4c7cc;
+    border-radius: 5px;
+    border: 2px solid #f8f9fa;
+}
+.apps-browser-content::-webkit-scrollbar-thumb:hover {
+    background: #9aa0a6;
+}
+
+/* ─── Documentation Overrides (Full Browser View) ────────────── */
+/* Reset the dark theme for a clean webpage look */
+
+.apps-browser-content .doc-root {
+    --doc-bg-base: transparent;
+    --doc-bg-panel: #fff;
+    --doc-bg-hover: #f5f6f8;
+    --doc-bg-active: #e8eaed;
+    --doc-text-0: #1a1a2e;
+    --doc-text-1: #3d3d5c;
+    --doc-text-2: #6b7280;
+    --doc-accent: #c47a10;
+    --doc-accent-glow: rgba(196, 122, 16, 0.08);
+    --doc-border: #e5e7eb;
+    --doc-border-hover: #c47a10;
+    --doc-radius-lg: 0;
+    --doc-radius-md: 0;
+    --doc-radius-sm: 4px;
+
+    gap: 0;
+    height: 100%;
+}
+
+/* Breadcrumb */
+.apps-browser-content .doc-breadcrumb {
+    background: #f5f6f8;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
+    border-radius: 0;
+    padding: 10px 24px;
+    box-shadow: none;
+}
+
+.apps-browser-content .doc-crumb-btn {
+    color: #6b7280;
+    font-size: 12px;
+    padding: 4px 8px;
+}
+
+.apps-browser-content .doc-crumb-btn:not(:disabled):hover {
+    background: #f3f4f6;
+    color: #c47a10;
+    transform: none;
+}
+
+.apps-browser-content .doc-crumb-btn.active {
+    color: #c47a10;
+    background: rgba(196, 122, 16, 0.08);
+}
+
+.apps-browser-content .doc-crumb-sep {
+    color: #d1d5db;
+}
+
+/* View label */
+.apps-browser-content .doc-view-label {
+    color: #9ca3af;
+    font-size: 11px;
+    border-bottom-color: #e5e7eb;
+    padding: 12px 24px 10px;
+}
+
+/* Row buttons — full-width list style */
+.apps-browser-content .doc-list {
+    gap: 0;
+}
+
+.apps-browser-content .doc-row-btn {
+    background: #fff;
+    border: none;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 0;
+    padding: 18px 24px;
+    gap: 20px;
+    box-shadow: none;
+}
+
+.apps-browser-content .doc-row-btn:hover {
+    background: #f5f6f8;
+    border-color: transparent;
+    border-bottom: 1px solid #f0f0f0;
+    transform: none;
+    box-shadow: none;
+}
+
+.apps-browser-content .doc-row-btn::before {
+    display: none;
+}
+
+.apps-browser-content .doc-row-icon {
+    font-size: 22px;
+    min-width: 44px;
+    height: 44px;
+    background: #f5f6f8;
+    border: none;
+    border-radius: 8px;
+    box-shadow: none;
+}
+
+.apps-browser-content .doc-row-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.apps-browser-content .doc-row-desc {
+    font-size: 13px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+.apps-browser-content .doc-row-arrow {
+    color: #d1d5db;
+    font-size: 20px;
+}
+
+.apps-browser-content .doc-row-btn:hover .doc-row-arrow {
+    color: #c47a10;
+}
+
+/* Guide View */
+.apps-browser-content .doc-guide-view {
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: hidden;
+    flex: 1;
+}
+
+.apps-browser-content .doc-guide-scroll {
+    padding: 32px 48px 48px;
+}
+
+/* Markdown body */
+.apps-browser-content .doc-md-body {
+    gap: 8px;
+}
+
+.apps-browser-content .doc-h1 {
+    color: #1a1a2e;
+    font-size: 28px;
+    font-weight: 700;
+    margin: 12px 0 20px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.apps-browser-content .doc-h2 {
+    color: #c47a10;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 28px 0 12px;
+    letter-spacing: 0;
+}
+
+.apps-browser-content .doc-h3 {
+    color: #1a1a2e;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 8px;
+}
+
+.apps-browser-content .doc-p {
+    color: #374151;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 4px 0;
+}
+
+/* Code blocks */
+.apps-browser-content .doc-code-block {
+    background: #f6f8fa;
+    border: 1px solid #e1e4e8;
+    border-left: 3px solid #c47a10;
+    border-radius: 6px;
+    padding: 16px 20px;
+    margin: 14px 0;
+    box-shadow: none;
+}
+
+.apps-browser-content .doc-code-block code {
+    color: #24292e;
+    font-size: 13.5px;
+    line-height: 1.6;
+}
+
+.apps-browser-content .doc-inline-code {
+    background: #f3f4f6;
+    color: #c47a10;
+    border: 1px solid #e5e7eb;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.88em;
+}
+
+/* Lists */
+.apps-browser-content .doc-ul,
+.apps-browser-content .doc-ol {
+    color: #374151;
+    font-size: 15px;
+    line-height: 1.75;
+    margin: 6px 0 6px 28px;
+}
+
+.apps-browser-content .doc-li {
+    margin: 6px 0;
+}
+
+/* Tables */
+.apps-browser-content .doc-table {
+    font-size: 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    margin: 16px 0;
+    overflow: hidden;
+}
+
+.apps-browser-content .doc-table th {
+    background: #f9fafb;
+    color: #1a1a2e;
+    font-weight: 600;
+    padding: 12px 16px;
+    border-bottom: 2px solid #e5e7eb;
+    font-family: inherit;
+}
+
+.apps-browser-content .doc-table td {
+    color: #374151;
+    padding: 10px 16px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.apps-browser-content .doc-table tr:last-child td {
+    border-bottom: none;
+}
+
+/* Dividers */
+.apps-browser-content .doc-hr {
+    border-top: 1px solid #e5e7eb;
+    margin: 28px 0;
+}
+
+/* Links */
+.apps-browser-content .doc-link {
+    color: #c47a10;
+    border-bottom: 1px solid transparent;
+}
+
+.apps-browser-content .doc-link:hover {
+    color: #a35c00;
+    border-bottom-color: #a35c00;
+}
+
+/* Loading */
+.apps-browser-content .doc-loading {
+    padding: 80px 0;
+}
+
+.apps-browser-content .doc-loading-dot {
+    width: 10px;
+    height: 10px;
+    background: #c47a10;
+}
+
+/* Error */
+.apps-browser-content .doc-fetch-error {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    border-left: 3px solid #ef4444;
+    color: #991b1b;
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 14px;
+}
+
+/* Search highlights — light theme version */
+.apps-browser-content .doc-find-term {
+    background: #fef3c7;
+    color: #92400e;
+    padding: 1px 4px;
+    border-radius: 3px;
+    border: 1px solid #fcd34d;
+}
+
+.apps-browser-content .doc-find-term-active {
+    background: #f59e0b;
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+}

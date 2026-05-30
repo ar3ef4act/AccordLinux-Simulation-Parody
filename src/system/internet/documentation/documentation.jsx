@@ -9,6 +9,8 @@ import repositoryUrl        from './linux/repository/guide.md';
 import howToDoUrl           from './howtodo.md'
 import softwareUrl           from './software.md'
 
+import './Documentation.css';
+
 /**
  * Root cause: webpack (without raw-loader / ?raw) bundles .md files as
  * asset URLs like /static/media/guide.da2901481e0501d2a53c.md, not strings.
