@@ -1,43 +1,41 @@
-# === Tahap 1: Build Aplikasi (Node.js) ===
-FROM node:18-alpine AS builder
+# ─── TAHAP 1: BUILD ──────────────────────────────────────────
+FROM node:18-alpine AS build
 WORKDIR /app
 
-# Menyalin berkas dependency projek
+# Install dependencies terlebih dahulu (untuk caching yang efisien)
 COPY package*.json ./
 RUN npm install
 
-# Menyalin seluruh source code ke dalam container
+# Copy seluruh source code kamu
 COPY . .
 
-# Menangkap Substitution Variables (berawalan _) dari Google Cloud Build UI
-ARG _REACT_APP_FIREBASE_API_KEY
-ARG _REACT_APP_FIREBASE_AUTH_DOMAIN
-ARG _REACT_APP_FIREBASE_PROJECT_ID
-ARG _REACT_APP_FIREBASE_STORAGE_BUCKET
-ARG _REACT_APP_FIREBASE_MESSAGING_SENDER_ID
-ARG _REACT_APP_FIREBASE_APP_ID
-ARG _REACT_APP_FIREBASE_MEASUREMENT_ID
+# Tangkap semua variabel rahasia dari Google Cloud Build Substitution Variables
+ARG REACT_APP_FIREBASE_API_KEY
+ARG REACT_APP_FIREBASE_AUTH_DOMAIN
+ARG REACT_APP_FIREBASE_PROJECT_ID
+ARG REACT_APP_FIREBASE_STORAGE_BUCKET
+ARG REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+ARG REACT_APP_FIREBASE_APP_ID
+ARG REACT_APP_FIREBASE_MEASUREMENT_ID
 
-# Menyuntikkan nilai tersebut ke environment webpack/React saat proses build berlangsung
-ENV REACT_APP_FIREBASE_API_KEY=$_REACT_APP_FIREBASE_API_KEY
-ENV REACT_APP_FIREBASE_AUTH_DOMAIN=$_REACT_APP_FIREBASE_AUTH_DOMAIN
-ENV REACT_APP_FIREBASE_PROJECT_ID=$_REACT_APP_FIREBASE_PROJECT_ID
-ENV REACT_APP_FIREBASE_STORAGE_BUCKET=$_REACT_APP_FIREBASE_STORAGE_BUCKET
-ENV REACT_APP_FIREBASE_MESSAGING_SENDER_ID=$_REACT_APP_FIREBASE_MESSAGING_SENDER_ID
-ENV REACT_APP_FIREBASE_APP_ID=$_REACT_APP_FIREBASE_APP_ID
-ENV REACT_APP_FIREBASE_MEASUREMENT_ID=$_REACT_APP_FIREBASE_MEASUREMENT_ID
+# Jadikan Environment Variable agar bisa dibaca oleh React saat proses build
+ENV REACT_APP_FIREBASE_API_KEY=$REACT_APP_FIREBASE_API_KEY
+ENV REACT_APP_FIREBASE_AUTH_DOMAIN=$REACT_APP_FIREBASE_AUTH_DOMAIN
+ENV REACT_APP_FIREBASE_PROJECT_ID=$REACT_APP_FIREBASE_PROJECT_ID
+ENV REACT_APP_FIREBASE_STORAGE_BUCKET=$REACT_APP_FIREBASE_STORAGE_BUCKET
+ENV REACT_APP_FIREBASE_MESSAGING_SENDER_ID=$REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+ENV REACT_APP_FIREBASE_APP_ID=$REACT_APP_FIREBASE_APP_ID
+ENV REACT_APP_FIREBASE_MEASUREMENT_ID=$REACT_APP_FIREBASE_MEASUREMENT_ID
 
-# Google Cloud Build menjalankan compile di sini, menghasilkan folder /build otomatis di cloud
+# Eksekusi build React menjadi file statis (HTML/CSS/JS)
 RUN npm run build
 
-# === Tahap 2: Menyajikan Aplikasi dengan Nginx ===
+# ─── TAHAP 2: SERVE DENGAN NGINX (PRODUCTION) ────────────────
 FROM nginx:alpine
 
-# Menyalin folder hasil build otomatis di atas ke direktori HTML Nginx
-COPY --from=builder /app/build /usr/share/nginx/html
+# Pindahkan hasil folder /build dari tahap 1 ke folder server Nginx
+COPY --from=build /app/build /usr/share/nginx/html
 
-# Membuka port default web
+# 💡 KUNCI JAWABAN ERROR: Paksa Nginx untuk menggunakan Port 8080
 EXPOSE 8080
-
-# Menjalankan web server Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD sed -i -e 's/80/8080/g' /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'
